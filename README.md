@@ -1,25 +1,19 @@
-# Product/Platform - Task
+# DiagramControl for WPF - How to display multiple diagrams as MDI documents
 
-This is the repository template for creating new examples. Describe the solved task here.
+This example shows how to create multiple diagram documents using DockLayoutManager.
 
-Put a screenshot that illustrates the result here.
+~screenshot~
 
-Then, add implementation details (steps, code snippets, and other technical information in a free form), or add a link to an existing document with implementation details. 
+The main idea there is to use the [Document Management System](https://docs.devexpress.com/WPF/18234/mvvm-framework/services/predefined-set/document-services/document-management-system) to create multiple document panels displaying diagrams and connect them to utility elements (toolbox, property panel, and ribbon) using data binding.
 
 ## Files to Review
 
-- link.cs (VB: link.vb)
-- link.js
-- ...
+
 
 ## Documentation
 
-- link
-- link
-- ...
+
 
 ## More Examples
 
-- link
-- link
-- ...
+
