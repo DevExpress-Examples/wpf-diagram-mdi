@@ -7,18 +7,16 @@
 
 This example shows how to create multiple diagram documents using DockLayoutManager.
 
-~screenshot~
+![](img/wpf-diagram-mdi.png)
 
 The main idea there is to use the [Document Management System](https://docs.devexpress.com/WPF/18234/mvvm-framework/services/predefined-set/document-services/document-management-system) to create multiple document panels displaying diagrams and connect them to utility elements (toolbox, property panel, and ribbon) using data binding.
 
 ## Files to Review
 
+[MainWindow.xaml](CS/MainWindow.xaml) (VB: [MainWindow.xaml](VB/MainWindow.xaml))
 
-
-## Documentation
-
-
+[ViewModel.cs](CS/ViewModel.cs) (VB: [ViewModel.vb](VB/ViewModel.vb))
 
 ## More Examples
 
-
+[WPF Diagram - Use the DiagramDataBindingBehavior to Generate a Diagram from a Collection](https://github.com/DevExpress-Examples/wpf-diagram-use-diagramdatabindingbehavior-to-generate-diagram-from-collection#wpf-diagram---use-the-diagramdatabindingbehavior-to-generate-a-diagram-from-a-collection)
