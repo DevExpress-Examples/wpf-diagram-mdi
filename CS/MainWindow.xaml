@@ -102,8 +102,7 @@
                     </dxb:ControllerBehavior.Triggers>
                     <dxb:InsertAction ContainerName="{x:Static dxdiag:DefaultBarItemNames.ToolsGroup}">
                         <dxb:BarButtonItem Command="{Binding CreateDocumentCommand}" 
-                                           Glyph="{dx:DXImage 'SvgImages/Icon Builder/Actions_Add.svg'}"
-                                           IsEnabled="True">
+                                           Glyph="{dx:DXImage 'SvgImages/Icon Builder/Actions_Add.svg'}">
                             <dxb:BarButtonItem.SuperTip>
                                 <dx:SuperTip>
                                     <dx:SuperTipHeaderItem Content="Create document"/>
