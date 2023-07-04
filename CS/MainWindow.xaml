@@ -10,6 +10,7 @@
     xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
     xmlns:dxpg="http://schemas.devexpress.com/winfx/2008/xaml/propertygrid"
     xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+    xmlns:helpers="clr-namespace:MDI_Diagram.Helpers"
     xmlns:local="clr-namespace:MDI_Diagram"
     Width="1000"
     Height="800"
@@ -21,8 +22,8 @@
     </dx:ThemedWindow.DataContext>
 
     <dxmvvm:Interaction.Behaviors>
-        <dxdo:DockingDocumentUIService LayoutGroup="{Binding ElementName=documentHost}">
-            <dxdo:DockingDocumentUIService.ViewTemplate>
+        <dxdo:TabbedDocumentUIService DocumentGroup="{Binding ElementName=documentHost}">
+            <dxdo:TabbedDocumentUIService.ViewTemplate>
                 <DataTemplate>
                     <dxdiag:DiagramControl
                         ActiveTool="{Binding Path=(dxdo:DockLayoutManager.DockLayoutManager).DataContext.ActiveTool, RelativeSource={RelativeSource Self}, Mode=TwoWay}"
@@ -35,8 +36,8 @@
                         </dxmvvm:Interaction.Behaviors>
                     </dxdiag:DiagramControl>
                 </DataTemplate>
-            </dxdo:DockingDocumentUIService.ViewTemplate>
-        </dxdo:DockingDocumentUIService>
+            </dxdo:TabbedDocumentUIService.ViewTemplate>
+        </dxdo:TabbedDocumentUIService>
 
         <dxmvvm:EventToCommand Command="{Binding OnLoadedCommand}" EventName="Loaded" />
         <dxmvvm:SaveFileDialogService
@@ -51,12 +52,14 @@
             Filter="XML Files (.xml)|*.xml"
             FilterIndex="1"
             Title="Open Diagram" />
+        <dx:DXMessageBoxService />
     </dxmvvm:Interaction.Behaviors>
 
     <DockPanel>
         <dxdiag:DiagramRibbonControl
             DockPanel.Dock="Top"
             dxdiag:DiagramControl.Diagram="{Binding Path=ActiveDockItem.(dxdiag:DiagramControl.Diagram), ElementName=man}"
+            IsEnabled="{Binding Path=ActiveDockItem.(dxdiag:DiagramControl.Diagram), ElementName=man, Converter={helpers:NullableToBoolConverter}}"
             RibbonStyle="Office2010">
             <dxr:RibbonControl.ApplicationMenu>
                 <dxr:ApplicationMenu>
@@ -98,8 +101,18 @@
                         <dxb:ActionTrigger EventName="Loaded" />
                     </dxb:ControllerBehavior.Triggers>
                     <dxb:InsertAction ContainerName="{x:Static dxdiag:DefaultBarItemNames.ToolsGroup}">
-                        <dxb:BarButtonItem Command="{Binding CreateDocumentCommand}" Glyph="{dx:DXImage 'SvgImages/Icon Builder/Actions_Add.svg'}" />
+                        <dxb:BarButtonItem Command="{Binding CreateDocumentCommand}" 
+                                           Glyph="{dx:DXImage 'SvgImages/Icon Builder/Actions_Add.svg'}"
+                                           IsEnabled="True">
+                            <dxb:BarButtonItem.SuperTip>
+                                <dx:SuperTip>
+                                    <dx:SuperTipHeaderItem Content="Create document"/>
+                                    <dx:SuperTipItem Content="Create a new diagram document"/>
+                                </dx:SuperTip>
+                            </dxb:BarButtonItem.SuperTip>
+                        </dxb:BarButtonItem>
                     </dxb:InsertAction>
+                    <dxb:RemoveAction ElementName="{x:Static dxdiag:DefaultBarItemNames.Panes}" />
                 </dxb:ControllerBehavior>
             </dxmvvm:Interaction.Behaviors>
         </dxdiag:DiagramRibbonControl>
@@ -108,10 +121,12 @@
                 <dxdo:LayoutPanel
                     MaxWidth="300"
                     AllowActivate="False"
-                    Caption="Toolbox">
-                    <dxdiag:DiagramToolboxControl DiagramControl="{Binding Path=ActiveDockItem.(dxdiag:DiagramControl.Diagram), ElementName=man}" />
+                    AllowClose="False"
+                    Caption="Toolbox"
+                    IsEnabled="{Binding Path=(dxdo:DockLayoutManager.DockLayoutManager).ActiveDockItem.(dxdiag:DiagramControl.Diagram), RelativeSource={RelativeSource Self}, Converter={helpers:NullableToBoolConverter}}">
+                    <dxdiag:DiagramToolboxControl DiagramControl="{Binding Path=(dxdo:DockLayoutManager.DockLayoutManager).ActiveDockItem.(dxdiag:DiagramControl.Diagram), RelativeSource={RelativeSource Self}}" />
                 </dxdo:LayoutPanel>
-                <dxdo:LayoutGroup
+                <dxdo:DocumentGroup
                     x:Name="documentHost"
                     DestroyOnClosingChildren="False"
                     GroupBorderStyle="Tabbed"
@@ -119,14 +134,28 @@
                 <dxdo:LayoutPanel
                     MaxWidth="300"
                     AllowActivate="False"
-                    Caption="Properties">
+                    AllowClose="False"
+                    Caption="Properties"
+                    IsEnabled="{Binding Path=(dxdo:DockLayoutManager.DockLayoutManager).ActiveDockItem.(dxdiag:DiagramControl.Diagram), RelativeSource={RelativeSource Self}, Converter={helpers:NullableToBoolConverter}}">
                     <dxpg:PropertyGridControl
-                        dxdiag:DiagramControl.Diagram="{Binding Path=ActiveDockItem.(dxdiag:DiagramControl.Diagram), ElementName=man}"
+                        dxdiag:DiagramControl.Diagram="{Binding Path=(dxdo:DockLayoutManager.DockLayoutManager).ActiveDockItem.(dxdiag:DiagramControl.Diagram), RelativeSource={RelativeSource Self}}"
                         ScrollViewer.VerticalScrollBarVisibility="Auto"
-                        SelectedObject="{Binding Path=ActiveDockItem.(dxdiag:DiagramControl.Diagram).SelectionModel, ElementName=man}"
+                        SelectedObject="{Binding Path=(dxdo:DockLayoutManager.DockLayoutManager).ActiveDockItem.(dxdiag:DiagramControl.Diagram).SelectionModel, RelativeSource={RelativeSource Self}}"
                         ShowCategories="False" />
                 </dxdo:LayoutPanel>
             </dxdo:LayoutGroup>
+            <dxdo:DockLayoutManager.FloatGroups>
+                <dxdo:FloatGroup FloatLocation="1395, 660" AllowActivate="False">
+                    <dxdo:LayoutPanel AllowActivate="False"
+                                      AllowHide="False"
+                                      AllowDock="False"
+                                      AllowMaximize="False"
+                                      Caption="Pan &#38; Zoom"
+                                      IsEnabled="{Binding Path=(dxdo:DockLayoutManager.DockLayoutManager).ActiveDockItem.(dxdiag:DiagramControl.Diagram), RelativeSource={RelativeSource Self}, Converter={helpers:NullableToBoolConverter}}">
+                        <dxdiag:DiagramPanAndZoomControl Diagram="{Binding Path=(dxdo:DockLayoutManager.DockLayoutManager).ActiveDockItem.(dxdiag:DiagramControl.Diagram), RelativeSource={RelativeSource Self}}" />
+                    </dxdo:LayoutPanel>
+                </dxdo:FloatGroup>
+            </dxdo:DockLayoutManager.FloatGroups>
         </dxdo:DockLayoutManager>
     </DockPanel>
 </dx:ThemedWindow>

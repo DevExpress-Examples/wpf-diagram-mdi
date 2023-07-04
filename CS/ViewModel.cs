@@ -1,6 +1,7 @@
 ﻿using DevExpress.Diagram.Core;
 using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace MDI_Diagram {
         IDocumentManagerService DocumentManagerService => GetService<IDocumentManagerService>();
         IOpenFileDialogService OpenFileDialogService => GetService<IOpenFileDialogService>();
         ISaveFileDialogService SaveFileDialogService => GetService<ISaveFileDialogService>();
+        IMessageBoxService MessageBoxService => GetService<IMessageBoxService>();
 
         [Command]
         public void CreateDocument(DocumentViewModel vm = null) {
@@ -38,14 +40,18 @@ namespace MDI_Diagram {
 
         [Command]
         public void OpenMany() {
-            if (OpenFileDialogService.ShowDialog()) {
-                var serializer = new XmlSerializer(typeof(DiagramLayoutWrapper));
+            try {
+                if (OpenFileDialogService.ShowDialog()) {
+                    var serializer = new XmlSerializer(typeof(DiagramLayoutWrapper));
 
-                var wrapper = serializer.Deserialize(OpenFileDialogService.File.OpenText()) as DiagramLayoutWrapper;
+                    var wrapper = serializer.Deserialize(OpenFileDialogService.File.OpenText()) as DiagramLayoutWrapper;
 
-                if (wrapper != null)
-                    foreach (var diagram in wrapper.Diagrams)
-                        CreateDocument(new DocumentViewModel() { Diagram = diagram });
+                    if (wrapper != null)
+                        foreach (var diagram in wrapper.Diagrams)
+                            CreateDocument(new DocumentViewModel() { Diagram = diagram });
+                }
+            } catch (Exception ex) {
+                MessageBoxService.ShowMessage(ex.Message, "Error", MessageButton.OK, MessageIcon.Error);
             }
         }
 

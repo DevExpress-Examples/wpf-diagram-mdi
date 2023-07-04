@@ -34,29 +34,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Diagram.v22.2.Core, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
+	<Reference Include="DevExpress.Diagram.v22.2.Core" />
     <Reference Include="DevExpress.Mvvm.v22.2" />
     <Reference Include="DevExpress.Data.Desktop.v22.2" />
     <Reference Include="DevExpress.Data.v22.2" />
     <Reference Include="DevExpress.Printing.v22.2.Core" />
     <Reference Include="DevExpress.Xpf.Core.v22.2" />
-    <Reference Include="DevExpress.Xpf.Diagram.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Xpf.Docking.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Xpf.Printing.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Xpf.PropertyGrid.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Xpf.Ribbon.v22.2, Version=22.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
+    <Reference Include="DevExpress.Xpf.Diagram.v22.2" />
+    <Reference Include="DevExpress.Xpf.Docking.v22.2" />
+    <Reference Include="DevExpress.Xpf.Printing.v22.2" />
+    <Reference Include="DevExpress.Xpf.PropertyGrid.v22.2" />
+    <Reference Include="DevExpress.Xpf.Ribbon.v22.2" />
     <Reference Include="DevExpress.Xpf.Themes.Office2019Colorful.v22.2" />
     <Reference Include="DevExpress.Drawing.v22.2" />
     <Reference Include="System" />
@@ -81,6 +69,7 @@
     <Compile Include="Helpers\DiagramLayoutWrapper.cs" />
     <Compile Include="Helpers\DiagramService.cs" />
     <Compile Include="Helpers\MDIBehavior.cs" />
+	<Compile Include="Helpers\NullableToBoolConverter.cs" />
     <Compile Include="ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
