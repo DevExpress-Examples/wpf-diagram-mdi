@@ -22,7 +22,12 @@
     </dx:ThemedWindow.DataContext>
 
     <dxmvvm:Interaction.Behaviors>
-        <dxdo:TabbedDocumentUIService DocumentGroup="{Binding ElementName=documentHost}">
+        <dxdo:TabbedDocumentUIService DocumentGroup="{Binding Source={x:Reference documentHost}}">
+            <dxdo:TabbedDocumentUIService.DocumentPanelStyle>
+                <Style TargetType="dxdo:DocumentPanel">
+                    <Setter Property="AllowClose" Value="{Binding Source={x:Reference documentHost}, Path=Items.Count, Converter={helpers:AllowClosePanelConverter}}" />
+                </Style>
+            </dxdo:TabbedDocumentUIService.DocumentPanelStyle>
             <dxdo:TabbedDocumentUIService.ViewTemplate>
                 <DataTemplate>
                     <dxdiag:DiagramControl
@@ -101,7 +106,7 @@
                         <dxb:ActionTrigger EventName="Loaded" />
                     </dxb:ControllerBehavior.Triggers>
                     <dxb:InsertAction ContainerName="{x:Static dxdiag:DefaultBarItemNames.ToolsGroup}">
-                        <dxb:BarButtonItem Command="{Binding CreateDocumentCommand}" 
+                        <dxb:BarButtonItem Command="{Binding CreateDocumentCommand}"
                                            Glyph="{dx:DXImage 'SvgImages/Icon Builder/Actions_Add.svg'}">
                             <dxb:BarButtonItem.SuperTip>
                                 <dx:SuperTip>

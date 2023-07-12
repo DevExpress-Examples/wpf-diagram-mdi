@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-	<Reference Include="DevExpress.Diagram.v22.2.Core" />
+    <Reference Include="DevExpress.Diagram.v22.2.Core" />
     <Reference Include="DevExpress.Mvvm.v22.2" />
     <Reference Include="DevExpress.Data.Desktop.v22.2" />
     <Reference Include="DevExpress.Data.v22.2" />
@@ -66,10 +66,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\AllowClosePanelConverter.cs" />
     <Compile Include="Helpers\DiagramLayoutWrapper.cs" />
     <Compile Include="Helpers\DiagramService.cs" />
     <Compile Include="Helpers\MDIBehavior.cs" />
-	<Compile Include="Helpers\NullableToBoolConverter.cs" />
+    <Compile Include="Helpers\NullableToBoolConverter.cs" />
     <Compile Include="ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
