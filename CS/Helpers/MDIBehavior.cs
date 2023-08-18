@@ -19,11 +19,9 @@ namespace MDI_Diagram {
             if (AssociatedObject.IsLoaded)
                 Init();
             else
-                AssociatedObject.Loaded += AssociatedObject_Loaded;
-        }
-
-        private void AssociatedObject_Loaded(object sender, System.Windows.RoutedEventArgs e) {
-            Init();
+                AssociatedObject.Loaded += (s, e) => {
+                    Init();
+                };
         }
     }
 }
