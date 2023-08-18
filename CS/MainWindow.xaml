@@ -25,7 +25,7 @@
         <dxdo:TabbedDocumentUIService DocumentGroup="{Binding Source={x:Reference documentHost}}">
             <dxdo:TabbedDocumentUIService.DocumentPanelStyle>
                 <Style TargetType="dxdo:DocumentPanel">
-                    <Setter Property="AllowClose" Value="{Binding Source={x:Reference documentHost}, Path=Items.Count, Converter={helpers:AllowClosePanelConverter}}" />
+                    <Setter Property="AllowClose" Value="{DXBinding '@e(documentHost).Items.Count > 1 or @e(man).FloatGroups.Count > 2 or (@e(documentHost).Items.Count == 1 and @e(man).FloatGroups.Count == 2)'}" />
                 </Style>
             </dxdo:TabbedDocumentUIService.DocumentPanelStyle>
             <dxdo:TabbedDocumentUIService.ViewTemplate>
@@ -106,12 +106,11 @@
                         <dxb:ActionTrigger EventName="Loaded" />
                     </dxb:ControllerBehavior.Triggers>
                     <dxb:InsertAction ContainerName="{x:Static dxdiag:DefaultBarItemNames.ToolsGroup}">
-                        <dxb:BarButtonItem Command="{Binding CreateDocumentCommand}"
-                                           Glyph="{dx:DXImage 'SvgImages/Icon Builder/Actions_Add.svg'}">
+                        <dxb:BarButtonItem Command="{Binding CreateDocumentCommand}" Glyph="{dx:DXImage 'SvgImages/Icon Builder/Actions_Add.svg'}">
                             <dxb:BarButtonItem.SuperTip>
                                 <dx:SuperTip>
-                                    <dx:SuperTipHeaderItem Content="Create document"/>
-                                    <dx:SuperTipItem Content="Create a new diagram document"/>
+                                    <dx:SuperTipHeaderItem Content="Create document" />
+                                    <dx:SuperTipItem Content="Create a new diagram document" />
                                 </dx:SuperTip>
                             </dxb:BarButtonItem.SuperTip>
                         </dxb:BarButtonItem>
@@ -149,13 +148,17 @@
                 </dxdo:LayoutPanel>
             </dxdo:LayoutGroup>
             <dxdo:DockLayoutManager.FloatGroups>
-                <dxdo:FloatGroup FloatLocation="1395, 660" AllowActivate="False">
-                    <dxdo:LayoutPanel AllowActivate="False"
-                                      AllowHide="False"
-                                      AllowDock="False"
-                                      AllowMaximize="False"
-                                      Caption="Pan &#38; Zoom"
-                                      IsEnabled="{Binding Path=(dxdo:DockLayoutManager.DockLayoutManager).ActiveDockItem.(dxdiag:DiagramControl.Diagram), RelativeSource={RelativeSource Self}, Converter={helpers:NullableToBoolConverter}}">
+                <dxdo:FloatGroup
+                    AllowActivate="False"
+                    AllowClose="False"
+                    FloatLocation="1395, 660">
+                    <dxdo:LayoutPanel
+                        AllowActivate="False"
+                        AllowDock="False"
+                        AllowHide="False"
+                        AllowMaximize="False"
+                        Caption="Pan &#38; Zoom"
+                        IsEnabled="{Binding Path=(dxdo:DockLayoutManager.DockLayoutManager).ActiveDockItem.(dxdiag:DiagramControl.Diagram), RelativeSource={RelativeSource Self}, Converter={helpers:NullableToBoolConverter}}">
                         <dxdiag:DiagramPanAndZoomControl Diagram="{Binding Path=(dxdo:DockLayoutManager.DockLayoutManager).ActiveDockItem.(dxdiag:DiagramControl.Diagram), RelativeSource={RelativeSource Self}}" />
                     </dxdo:LayoutPanel>
                 </dxdo:FloatGroup>

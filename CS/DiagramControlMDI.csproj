@@ -42,7 +42,6 @@
     <Reference Include="DevExpress.Xpf.Core.v22.2" />
     <Reference Include="DevExpress.Xpf.Diagram.v22.2" />
     <Reference Include="DevExpress.Xpf.Docking.v22.2" />
-	<Reference Include="DevExpress.Xpf.Layout.v22.2.Core" />
     <Reference Include="DevExpress.Xpf.Printing.v22.2" />
     <Reference Include="DevExpress.Xpf.PropertyGrid.v22.2" />
     <Reference Include="DevExpress.Xpf.Ribbon.v22.2" />
@@ -67,7 +66,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Helpers\AllowClosePanelConverter.cs" />
     <Compile Include="Helpers\DiagramLayoutWrapper.cs" />
     <Compile Include="Helpers\DiagramService.cs" />
     <Compile Include="Helpers\MDIBehavior.cs" />

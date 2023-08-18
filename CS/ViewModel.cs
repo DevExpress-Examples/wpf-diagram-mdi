@@ -61,8 +61,10 @@ namespace MDI_Diagram {
                 var wrapper = new DiagramLayoutWrapper();
 
                 foreach (var doc in DocumentManagerService.Documents)
-                    if (doc.Content is DocumentViewModel vm)
+                    if (doc.Content is DocumentViewModel) {
+                        var vm = (DocumentViewModel)doc.Content;
                         wrapper.Diagrams.Add(vm.Save());
+                    }
 
                 var serializer = new XmlSerializer(typeof(DiagramLayoutWrapper));
 
