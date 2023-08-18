@@ -9,7 +9,7 @@ This example demonstrates how to use the [Dock and Layout Manager](https://docs.
 
 ![](img/wpf-diagram-mdi.png)
 
-The following list contains main ideas of this example:
+The following list contains the main ideas of this example:
 
 1. Use the [Document Management System](https://docs.devexpress.com/WPF/18234/mvvm-framework/services/predefined-set/document-services/document-management-system) to create multiple document panels that display diagrams.
 2. Use data bindings to connect these panels to diagram elements ([toolbox](https://docs.devexpress.com/WPF/116504/controls-and-libraries/diagram-control/diagram-designer-control/shapes-panel), [properties panel](https://docs.devexpress.com/WPF/116506/controls-and-libraries/diagram-control/diagram-designer-control/properties-panel), and [ribbon](https://docs.devexpress.com/WPF/116507/controls-and-libraries/diagram-control/diagram-designer-control/ribbon)).
