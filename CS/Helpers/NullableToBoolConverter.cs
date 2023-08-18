@@ -13,6 +13,8 @@ namespace MDI_Diagram.Helpers {
             throw new NotImplementedException();
         }
 
-        public override object ProvideValue(IServiceProvider serviceProvider) => this;
+        public override object ProvideValue(IServiceProvider serviceProvider) {
+            return this;
+        }
     }
 }
