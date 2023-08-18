@@ -42,6 +42,7 @@
     <Reference Include="DevExpress.Xpf.Core.v22.2" />
     <Reference Include="DevExpress.Xpf.Diagram.v22.2" />
     <Reference Include="DevExpress.Xpf.Docking.v22.2" />
+    <Reference Include="DevExpress.Xpf.Layout.v22.2.Core" />
     <Reference Include="DevExpress.Xpf.Printing.v22.2" />
     <Reference Include="DevExpress.Xpf.PropertyGrid.v22.2" />
     <Reference Include="DevExpress.Xpf.Ribbon.v22.2" />

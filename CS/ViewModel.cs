@@ -9,6 +9,7 @@ using System.Xml.Serialization;
 
 namespace MDI_Diagram {
     public class ViewModel : ViewModelBase {
+        int? documentCount = null;
         public ViewModel() {
             SelectedDiagramStencils = new StencilCollection() { "BasicShapes" };
             DiagramTheme = DiagramThemes.Office;
@@ -21,14 +22,16 @@ namespace MDI_Diagram {
 
         [Command]
         public void CreateDocument(DocumentViewModel vm = null) {
-            var docCount = DocumentManagerService.Documents.Count();
-            IDocument doc = DocumentManagerService.FindDocumentById(docCount);
+            if (!documentCount.HasValue)
+                documentCount = DocumentManagerService.Documents.Count();
+            IDocument doc = DocumentManagerService.FindDocumentById(documentCount);
             if (doc == null) {
                 if (vm == null)
                     vm = new DocumentViewModel();
-                vm.Name = $"Document {docCount}";
+                vm.Name = $"Document {documentCount}";
                 doc = DocumentManagerService.CreateDocument(vm);
-                doc.Id = docCount;
+                doc.Id = documentCount;
+                documentCount++;
             }
             doc.Show();
         }
@@ -61,10 +64,8 @@ namespace MDI_Diagram {
                 var wrapper = new DiagramLayoutWrapper();
 
                 foreach (var doc in DocumentManagerService.Documents)
-                    if (doc.Content is DocumentViewModel) {
-                        var vm = (DocumentViewModel)doc.Content;
+                    if (doc.Content is DocumentViewModel vm)
                         wrapper.Diagrams.Add(vm.Save());
-                    }
 
                 var serializer = new XmlSerializer(typeof(DiagramLayoutWrapper));
 
