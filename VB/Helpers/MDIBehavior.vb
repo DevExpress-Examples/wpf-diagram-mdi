@@ -1,6 +1,7 @@
 Imports DevExpress.Mvvm.UI
 Imports DevExpress.Mvvm.UI.Interactivity
 Imports DevExpress.Xpf.Diagram
+Imports DevExpress.Xpf.Docking
 Imports System.Linq
 
 Namespace MDI_Diagram
@@ -18,7 +19,7 @@ Namespace MDI_Diagram
             If AssociatedObject.IsLoaded Then
                 Init()
             Else
-                Me.AssociatedObject.Loaded += AddressOf AssociatedObject_Loaded
+                AddHandler AssociatedObject.Loaded, AddressOf AssociatedObject_Loaded
             End If
         End Sub
 
