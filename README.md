@@ -27,4 +27,4 @@ The following list contains main ideas of this example:
 
 ## More Examples
 
-* [WPF Diagram - Use the DiagramDataBindingBehavior to Generate a Diagram from a Collection](https://github.com/DevExpress-Examples/wpf-diagram-use-diagramdatabindingbehavior-to-generate-diagram-from-collection#wpf-diagram---use-the-diagramdatabindingbehavior-to-generate-a-diagram-from-a-collection)
+* [WPF Diagram - Use the DiagramDataBindingBehavior to Generate a Diagram from a Collection](https://github.com/DevExpress-Examples/wpf-diagram-use-diagramdatabindingbehavior-to-generate-diagram-from-collection)
