@@ -17,8 +17,8 @@ The following list contains the main ideas of this example:
 
 ## Files to Review
 
-* [MainWindow.xaml](CS/MainWindow.xaml) (VB: [MainWindow.xaml](VB/MainWindow.xaml))
-* [ViewModel.cs](CS/ViewModel.cs) (VB: [ViewModel.vb](VB/ViewModel.vb))
+* [MainWindow.xaml](CS/MainWindow.xaml)
+* [ViewModel.cs](CS/ViewModel.cs)
 
 ## Documentation
 
