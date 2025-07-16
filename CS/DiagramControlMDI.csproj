@@ -35,21 +35,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Diagram.v24.2.Core" />
-    <Reference Include="DevExpress.Mvvm.v24.2" />
-    <Reference Include="DevExpress.Data.Desktop.v24.2" />
-    <Reference Include="DevExpress.Data.v24.2" />
-    <Reference Include="DevExpress.Printing.v24.2.Core" />
-    <Reference Include="DevExpress.Xpf.Core.v24.2" />
-    <Reference Include="DevExpress.Xpf.Diagram.v24.2" />
-    <Reference Include="DevExpress.Xpf.Docking.v24.2" />
-    <Reference Include="DevExpress.Xpf.Layout.v24.2.Core" />
-    <Reference Include="DevExpress.Xpf.Controls.v24.2" />
-    <Reference Include="DevExpress.Xpf.Printing.v24.2" />
-    <Reference Include="DevExpress.Xpf.PropertyGrid.v24.2" />
-    <Reference Include="DevExpress.Xpf.Ribbon.v24.2" />
-    <Reference Include="DevExpress.Xpf.Themes.Office2019Colorful.v24.2" />
-    <Reference Include="DevExpress.Drawing.v24.2" />
+    <Reference Include="DevExpress.Diagram.v25.1.Core" />
+    <Reference Include="DevExpress.Mvvm.v25.1" />
+    <Reference Include="DevExpress.Data.Desktop.v25.1" />
+    <Reference Include="DevExpress.Data.v25.1" />
+    <Reference Include="DevExpress.Printing.v25.1.Core" />
+    <Reference Include="DevExpress.Xpf.Core.v25.1" />
+    <Reference Include="DevExpress.Xpf.Diagram.v25.1" />
+    <Reference Include="DevExpress.Xpf.Docking.v25.1" />
+    <Reference Include="DevExpress.Xpf.Layout.v25.1.Core" />
+    <Reference Include="DevExpress.Xpf.Controls.v25.1" />
+    <Reference Include="DevExpress.Xpf.Printing.v25.1" />
+    <Reference Include="DevExpress.Xpf.PropertyGrid.v25.1" />
+    <Reference Include="DevExpress.Xpf.Ribbon.v25.1" />
+    <Reference Include="DevExpress.Xpf.Themes.Office2019Colorful.v25.1" />
+    <Reference Include="DevExpress.Drawing.v25.1" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -73,7 +73,14 @@
     <Compile Include="Helpers\DiagramService.cs" />
     <Compile Include="Helpers\MDIBehavior.cs" />
     <Compile Include="Helpers\NullableToBoolConverter.cs" />
+    <Compile Include="Helpers\PanAndZoomControlPresenter.xaml.cs">
+      <DependentUpon>PanAndZoomControlPresenter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel.cs" />
+    <Page Include="Helpers\PanAndZoomControlPresenter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
