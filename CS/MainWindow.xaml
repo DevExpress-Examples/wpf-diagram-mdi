@@ -159,7 +159,13 @@
                         AllowMaximize="False"
                         Caption="Pan &#38; Zoom"
                         IsEnabled="{Binding Path=(dxdo:DockLayoutManager.DockLayoutManager).ActiveDockItem.(dxdiag:DiagramControl.Diagram), RelativeSource={RelativeSource Self}, Converter={helpers:NullableToBoolConverter}}">
-                        <dxdiag:DiagramPanAndZoomControl Diagram="{Binding Path=(dxdo:DockLayoutManager.DockLayoutManager).ActiveDockItem.(dxdiag:DiagramControl.Diagram), RelativeSource={RelativeSource Self}}" />
+                        <helpers:PanAndZoomControlPresenter Diagram="{Binding Path=(dxdo:DockLayoutManager.DockLayoutManager).ActiveDockItem.(dxdiag:DiagramControl.Diagram), RelativeSource={RelativeSource Self}}">
+                            <helpers:PanAndZoomControlPresenter.ControlTemplate>
+                                <DataTemplate>
+                                    <dxdiag:DiagramPanAndZoomControl />
+                                </DataTemplate>
+                            </helpers:PanAndZoomControlPresenter.ControlTemplate>
+                        </helpers:PanAndZoomControlPresenter>
                     </dxdo:LayoutPanel>
                 </dxdo:FloatGroup>
             </dxdo:DockLayoutManager.FloatGroups>
